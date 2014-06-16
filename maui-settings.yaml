@@ -1,0 +1,26 @@
+Name        : maui-settings
+Version     : 0.1.0
+Release     : 1
+Group       : System/Base
+License     : MIT
+Summary     : Customizations for Maui
+Description : |
+  Customizations for Maui.
+URL         : http://www.maui-project.org/
+NoFiles     : True
+
+Macros:
+    - plymouth_theme;solar
+
+Configure: none
+Builder: none
+
+SubPackages:
+    - Name: plymouth
+      Summary: Maui default configuration for Plymouth
+      Group: System/Base
+      Description: |
+        This package contains installs and configures the Maui
+        theme for Plymouth.
+      Requires:
+          - plymouth-theme-%{plymouth_theme}
