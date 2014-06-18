@@ -10,7 +10,7 @@ Name:       maui-settings
 %define plymouth_theme solar
 
 Summary:    Customizations for Maui
-Version:    0.1.0
+Version:    0.2.0
 Release:    1
 Group:      System/Base
 License:    MIT
