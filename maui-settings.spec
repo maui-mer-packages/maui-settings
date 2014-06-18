@@ -21,6 +21,15 @@ Source100:  maui-settings.yaml
 Customizations for Maui.
 
 
+%package system
+Summary:    Maui default system configuration
+Group:      System/Base
+
+%description system
+This package configures several aspects of the system to
+implement better defaults for Maui.
+
+
 %package plymouth
 Summary:    Maui default configuration for Plymouth
 Group:      System/Base
@@ -47,7 +56,12 @@ theme for Plymouth.
 %install
 rm -rf %{buildroot}
 # >> install pre
-mkdir -p %{buildroot}
+# Avoid Plymouth being interrupted by kernel messages
+mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
+cat > %{buildroot}%{_sysconfdir}/sysctl.d/10-console-messages.conf <<EOF
+# The following stops low-level messages on console
+kernel.printk = 4 4 1 7
+EOF
 # << install pre
 
 # >> install post
@@ -55,7 +69,12 @@ mkdir -p %{buildroot}
 
 %post plymouth
 # >> post plymouth
-plymouth-set-default-theme %{plymouth_theme}
+cat > %{_datadir}/plymouth/plymouthd.defaults <<EOF
+# Distribution defaults. Changes to this file will get overwritten during
+# upgrades.
+[Daemon]
+Theme=%{plymouth_theme}
+EOF
 # << post plymouth
 
 %postun plymouth
@@ -63,6 +82,12 @@ plymouth-set-default-theme %{plymouth_theme}
 plymouth-set-default-theme --reset
 # << postun plymouth
 
+
+%files system
+%defattr(-,root,root,-)
+%config %{_sysconfdir}/sysctl.d/10-console-messages.conf
+# >> files system
+# << files system
 
 %files plymouth
 %defattr(-,root,root,-)
