@@ -24,6 +24,7 @@ SubPackages:
         implement better defaults for Maui.
       Files:
           - "%config %{_sysconfdir}/sysctl.d/10-console-messages.conf"
+          - "%{_sysconfdir}/udev/rules.d/10-disk-scheduler.rules"
     - Name: plymouth
       Summary: Maui default configuration for Plymouth
       Group: System/Base
