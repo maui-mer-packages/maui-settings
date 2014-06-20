@@ -32,3 +32,5 @@ SubPackages:
         theme for Plymouth.
       Requires:
           - plymouth-theme-%{plymouth_theme}
+      Files:
+          - "%config %{_datadir}/plymouth/plymouthd.defaults"

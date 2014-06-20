@@ -56,6 +56,15 @@ theme for Plymouth.
 %install
 rm -rf %{buildroot}
 # >> install pre
+# Create default configuration for Plymouth
+mkdir -p %{buildroot}%{_datadir}/plymouth
+cat > %{buildroot}%{_datadir}/plymouth/plymouthd.defaults <<EOF
+# Distribution defaults. Changes to this file will get overwritten during
+# upgrades.
+[Daemon]
+Theme=%{plymouth_theme}
+EOF
+
 # Avoid Plymouth being interrupted by kernel messages
 mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
 cat > %{buildroot}%{_sysconfdir}/sysctl.d/10-console-messages.conf <<EOF
@@ -67,21 +76,6 @@ EOF
 # >> install post
 # << install post
 
-%post plymouth
-# >> post plymouth
-cat > %{_datadir}/plymouth/plymouthd.defaults <<EOF
-# Distribution defaults. Changes to this file will get overwritten during
-# upgrades.
-[Daemon]
-Theme=%{plymouth_theme}
-EOF
-# << post plymouth
-
-%postun plymouth
-# >> postun plymouth
-plymouth-set-default-theme --reset
-# << postun plymouth
-
 
 %files system
 %defattr(-,root,root,-)
@@ -91,5 +85,6 @@ plymouth-set-default-theme --reset
 
 %files plymouth
 %defattr(-,root,root,-)
+%config %{_datadir}/plymouth/plymouthd.defaults
 # >> files plymouth
 # << files plymouth
