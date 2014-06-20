@@ -69,7 +69,7 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
 cat > %{buildroot}%{_sysconfdir}/sysctl.d/10-console-messages.conf <<EOF
 # The following stops low-level messages on console
-kernel.printk = 4 4 1 7
+kernel.printk = 4 5 1 7
 EOF
 # << install pre
 
