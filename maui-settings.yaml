@@ -31,7 +31,11 @@ SubPackages:
       Description: |
         This package contains installs and configures the Maui
         theme for Plymouth.
+      Provides:
+          - plymouth-system-theme
+      Conflicts:
+          - plymouth-system-theme
       Requires:
           - plymouth-theme-%{plymouth_theme}
       Files:
-          - "%config %{_datadir}/plymouth/plymouthd.defaults"
+          - "%{_datadir}/plymouth/plymouthd.defaults"

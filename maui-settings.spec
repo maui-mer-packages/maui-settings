@@ -34,6 +34,8 @@ implement better defaults for Maui.
 Summary:    Maui default configuration for Plymouth
 Group:      System/Base
 Requires:   plymouth-theme-%{plymouth_theme}
+Provides:   plymouth-system-theme
+Conflicts:  plymouth-system-theme
 
 %description plymouth
 This package contains installs and configures the Maui
@@ -96,6 +98,6 @@ EOF
 
 %files plymouth
 %defattr(-,root,root,-)
-%config %{_datadir}/plymouth/plymouthd.defaults
+%{_datadir}/plymouth/plymouthd.defaults
 # >> files plymouth
 # << files plymouth
