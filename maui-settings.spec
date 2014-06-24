@@ -68,15 +68,15 @@ Theme=%{plymouth_theme}
 EOF
 
 # Avoid Plymouth being interrupted by kernel messages
-mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
-cat > %{buildroot}%{_sysconfdir}/sysctl.d/10-console-messages.conf <<EOF
+mkdir -p %{buildroot}%{_libdir}/sysctl.d
+cat > %{buildroot}%{_libdir}/sysctl.d/10-console-messages.conf <<EOF
 # The following stops low-level messages on console
 kernel.printk = 4 5 1 7
 EOF
 
 # Configure disk schedulers
-mkdir -p %{buildroot}%{_sysconfdir}/udev/rules.d
-cat > %{buildroot}%{_sysconfdir}/udev/rules.d/10-disk-scheduler.rules <<EOF
+mkdir -p %{buildroot}/lib/udev/rules.d
+cat > %{buildroot}/lib/udev/rules.d/10-disk-scheduler.rules <<EOF
 # Set deadline scheduler for non-rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
 
@@ -91,8 +91,8 @@ EOF
 
 %files system
 %defattr(-,root,root,-)
-%config %{_sysconfdir}/sysctl.d/10-console-messages.conf
-%{_sysconfdir}/udev/rules.d/10-disk-scheduler.rules
+%{_libdir}/sysctl.d/10-console-messages.conf
+/lib/udev/rules.d/10-disk-scheduler.rules
 # >> files system
 # << files system
 
