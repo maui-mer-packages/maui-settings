@@ -7,7 +7,7 @@ Name:       maui-settings
 
 # >> macros
 # << macros
-%define plymouth_theme solar
+%define plymouth_theme maui
 
 Summary:    Customizations for Maui
 Version:    0.3.2

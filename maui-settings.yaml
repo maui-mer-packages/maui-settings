@@ -10,7 +10,7 @@ URL         : http://www.maui-project.org/
 NoFiles     : True
 
 Macros:
-    - plymouth_theme;solar
+    - plymouth_theme;maui
 
 Configure: none
 Builder: none
