@@ -10,7 +10,7 @@ Name:       maui-settings
 %define plymouth_theme maui
 
 Summary:    Customizations for Maui
-Version:    0.4.0
+Version:    0.4.1
 Release:    1
 Group:      System/Base
 License:    MIT
