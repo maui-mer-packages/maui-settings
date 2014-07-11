@@ -12,6 +12,9 @@ NoFiles     : True
 Macros:
     - plymouth_theme;maui
 
+PkgBR:
+    - kde5-filesystem
+
 Configure: none
 Builder: none
 
@@ -39,3 +42,12 @@ SubPackages:
           - plymouth-theme-%{plymouth_theme}
       Files:
           - "%{_datadir}/plymouth/plymouthd.defaults"
+    - Name: plasma5
+      Summary: Maui default configuration for Plasma 5
+      Group: System/Base
+      Description: |
+        This package implements Maui defaults for Plasma 5.
+      Requires:
+          - kde5-filesystem
+      Files:
+          - "%{_kde5_sysconfdir}/xdg/kdeglobals"

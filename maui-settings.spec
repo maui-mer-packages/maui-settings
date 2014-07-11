@@ -16,6 +16,7 @@ Group:      System/Base
 License:    MIT
 URL:        http://www.maui-project.org/
 Source100:  maui-settings.yaml
+BuildRequires:  kde5-filesystem
 
 %description
 Customizations for Maui.
@@ -40,6 +41,15 @@ Conflicts:  plymouth-system-theme
 %description plymouth
 This package contains installs and configures the Maui
 theme for Plymouth.
+
+
+%package plasma5
+Summary:    Maui default configuration for Plasma 5
+Group:      System/Base
+Requires:   kde5-filesystem
+
+%description plasma5
+This package implements Maui defaults for Plasma 5.
 
 
 %prep
@@ -83,6 +93,13 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue
 # Set cfq scheduler for rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
 EOF
+
+# Plasma 5 configuration
+mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
+cat > %{buildroot}%{_kde5_sysconfdir}/xdg/kdeglobals <<EOF
+[General]
+LookAndFeel=org.hawaii.lookandfeel.desktop
+EOF
 # << install pre
 
 # >> install post
@@ -101,3 +118,9 @@ EOF
 %{_datadir}/plymouth/plymouthd.defaults
 # >> files plymouth
 # << files plymouth
+
+%files plasma5
+%defattr(-,root,root,-)
+%{_kde5_sysconfdir}/xdg/kdeglobals
+# >> files plasma5
+# << files plasma5
