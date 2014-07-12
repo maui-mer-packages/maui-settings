@@ -12,9 +12,6 @@ NoFiles     : True
 Macros:
     - plymouth_theme;maui
 
-PkgBR:
-    - kde5-filesystem
-
 Configure: none
 Builder: none
 
@@ -50,4 +47,4 @@ SubPackages:
       Requires:
           - kde5-filesystem
       Files:
-          - "%{_kde5_sysconfdir}/xdg/kdeglobals"
+          - "%{_sysconfdir}/xdg/kdeglobals"

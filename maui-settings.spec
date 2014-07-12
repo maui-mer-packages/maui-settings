@@ -16,7 +16,6 @@ Group:      System/Base
 License:    MIT
 URL:        http://www.maui-project.org/
 Source100:  maui-settings.yaml
-BuildRequires:  kde5-filesystem
 
 %description
 Customizations for Maui.
@@ -95,8 +94,8 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue
 EOF
 
 # Plasma 5 configuration
-mkdir -p %{buildroot}%{_kde5_sysconfdir}/xdg
-cat > %{buildroot}%{_kde5_sysconfdir}/xdg/kdeglobals <<EOF
+mkdir -p %{buildroot}%{_sysconfdir}/xdg
+cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
 [General]
 LookAndFeel=org.hawaii.lookandfeel.desktop
 EOF
@@ -121,6 +120,6 @@ EOF
 
 %files plasma5
 %defattr(-,root,root,-)
-%{_kde5_sysconfdir}/xdg/kdeglobals
+%{_sysconfdir}/xdg/kdeglobals
 # >> files plasma5
 # << files plasma5
