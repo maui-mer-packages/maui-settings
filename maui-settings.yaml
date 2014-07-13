@@ -36,6 +36,8 @@ SubPackages:
       Conflicts:
           - plymouth-system-theme
       Requires:
+          - plymouth
+          - plymouth-plugin-two-step
           - plymouth-theme-%{theme}
       Files:
           - "%{_datadir}/plymouth/plymouthd.defaults"

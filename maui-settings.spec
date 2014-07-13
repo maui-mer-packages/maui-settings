@@ -33,6 +33,8 @@ implement better defaults for Maui.
 %package plymouth
 Summary:    Maui default configuration for Plymouth
 Group:      System/Base
+Requires:   plymouth
+Requires:   plymouth-plugin-two-step
 Requires:   plymouth-theme-%{theme}
 Provides:   plymouth-system-theme
 Conflicts:  plymouth-system-theme
