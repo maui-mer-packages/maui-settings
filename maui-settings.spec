@@ -107,13 +107,13 @@ cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
 LookAndFeel=org.hawaii.lookandfeel.desktop
 
 [Icons]
-Theme=maui
+Theme=%{theme}
 EOF
 
 # kcminput
 cat > %{buildroot}%{_sysconfdir}/xdg/kcminputrc <<EOF
 [Mouse]
-cursorTheme=maui
+cursorTheme=%{theme}
 EOF
 # << install pre
 
