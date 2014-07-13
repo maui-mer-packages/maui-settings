@@ -7,7 +7,7 @@ Name:       maui-settings
 
 # >> macros
 # << macros
-%define plymouth_theme maui
+%define theme maui
 
 Summary:    Customizations for Maui
 Version:    0.4.1
@@ -33,7 +33,7 @@ implement better defaults for Maui.
 %package plymouth
 Summary:    Maui default configuration for Plymouth
 Group:      System/Base
-Requires:   plymouth-theme-%{plymouth_theme}
+Requires:   plymouth-theme-%{theme}
 Provides:   plymouth-system-theme
 Conflicts:  plymouth-system-theme
 
@@ -73,7 +73,7 @@ cat > %{buildroot}%{_datadir}/plymouth/plymouthd.defaults <<EOF
 # Distribution defaults. Changes to this file will get overwritten during
 # upgrades.
 [Daemon]
-Theme=%{plymouth_theme}
+Theme=%{theme}
 EOF
 
 # Avoid Plymouth being interrupted by kernel messages

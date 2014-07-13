@@ -10,7 +10,7 @@ URL         : http://www.maui-project.org/
 NoFiles     : True
 
 Macros:
-    - plymouth_theme;maui
+    - theme;maui
 
 Configure: none
 Builder: none
@@ -36,7 +36,7 @@ SubPackages:
       Conflicts:
           - plymouth-system-theme
       Requires:
-          - plymouth-theme-%{plymouth_theme}
+          - plymouth-theme-%{theme}
       Files:
           - "%{_datadir}/plymouth/plymouthd.defaults"
     - Name: plasma5
