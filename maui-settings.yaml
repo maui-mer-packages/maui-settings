@@ -48,3 +48,4 @@ SubPackages:
           - kde5-filesystem
       Files:
           - "%{_sysconfdir}/xdg/kdeglobals"
+          - "%{_sysconfdir}/xdg/kcminputrc"

@@ -93,11 +93,24 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
 EOF
 
+#
 # Plasma 5 configuration
+#
 mkdir -p %{buildroot}%{_sysconfdir}/xdg
+
+# kdeglobals
 cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
 [General]
 LookAndFeel=org.hawaii.lookandfeel.desktop
+
+[Icons]
+Theme=maui
+EOF
+
+# kcminput
+cat > %{buildroot}%{_sysconfdir}/xdg/kcminputrc <<EOF
+[Mouse]
+cursorTheme=maui
 EOF
 # << install pre
 
@@ -121,5 +134,6 @@ EOF
 %files plasma5
 %defattr(-,root,root,-)
 %{_sysconfdir}/xdg/kdeglobals
+%{_sysconfdir}/xdg/kcminputrc
 # >> files plasma5
 # << files plasma5
