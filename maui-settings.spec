@@ -133,7 +133,7 @@ EOF
 
 %files plasma5
 %defattr(-,root,root,-)
-%{_sysconfdir}/xdg/kdeglobals
-%{_sysconfdir}/xdg/kcminputrc
+%config %{_sysconfdir}/xdg/kdeglobals
+%config %{_sysconfdir}/xdg/kcminputrc
 # >> files plasma5
 # << files plasma5

@@ -47,5 +47,5 @@ SubPackages:
       Requires:
           - kde5-filesystem
       Files:
-          - "%{_sysconfdir}/xdg/kdeglobals"
-          - "%{_sysconfdir}/xdg/kcminputrc"
+          - "%config %{_sysconfdir}/xdg/kdeglobals"
+          - "%config %{_sysconfdir}/xdg/kcminputrc"
