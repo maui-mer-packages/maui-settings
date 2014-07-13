@@ -46,6 +46,9 @@ SubPackages:
         This package implements Maui defaults for Plasma 5.
       Requires:
           - kde5-filesystem
+          - "%{theme}-icon-theme"
+          - "%{theme}-cursor-theme"
+          - "%{theme}-wallpapers"
       Files:
           - "%config %{_sysconfdir}/xdg/kdeglobals"
           - "%config %{_sysconfdir}/xdg/kcminputrc"
