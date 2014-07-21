@@ -60,7 +60,7 @@ This package implements Maui defaults for Plasma 5.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+# No setup
 
 # >> setup
 # << setup
