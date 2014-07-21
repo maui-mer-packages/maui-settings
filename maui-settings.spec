@@ -15,6 +15,8 @@ Release:    1
 Group:      System/Base
 License:    MIT
 URL:        http://www.maui-project.org/
+Source0:    powerdevilrc
+Source1:    powerdevilprofilesrc
 Source100:  maui-settings.yaml
 
 %description
@@ -58,6 +60,8 @@ This package implements Maui defaults for Plasma 5.
 
 
 %prep
+%setup -q -n %{name}-%{version}
+
 # >> setup
 # << setup
 
@@ -118,6 +122,10 @@ cat > %{buildroot}%{_sysconfdir}/xdg/kcminputrc <<EOF
 [Mouse]
 cursorTheme=%{theme}
 EOF
+
+# powerdevil
+install -D -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/xdg/powerdevilrc
+install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/powerdevilprofilesrc
 # << install pre
 
 # >> install post
@@ -141,5 +149,7 @@ EOF
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/xdg/kdeglobals
 %config %{_sysconfdir}/xdg/kcminputrc
+%config %{_sysconfdir}/xdg/powerdevilrc
+%config %{_sysconfdir}/xdg/powerdevilprofilesrc
 # >> files plasma5
 # << files plasma5

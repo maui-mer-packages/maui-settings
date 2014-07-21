@@ -12,6 +12,10 @@ NoFiles     : True
 Macros:
     - theme;maui
 
+Sources:
+    - powerdevilrc
+    - powerdevilprofilesrc
+
 Configure: none
 Builder: none
 
@@ -55,3 +59,5 @@ SubPackages:
       Files:
           - "%config %{_sysconfdir}/xdg/kdeglobals"
           - "%config %{_sysconfdir}/xdg/kcminputrc"
+          - "%config %{_sysconfdir}/xdg/powerdevilrc"
+          - "%config %{_sysconfdir}/xdg/powerdevilprofilesrc"
