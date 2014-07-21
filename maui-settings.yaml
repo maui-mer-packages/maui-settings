@@ -50,6 +50,7 @@ SubPackages:
           - kde5-filesystem
           - "%{theme}-icon-theme"
           - "%{theme}-cursor-theme"
+          - "%{theme}-plasma-theme"
           - "%{theme}-wallpapers"
       Files:
           - "%config %{_sysconfdir}/xdg/kdeglobals"

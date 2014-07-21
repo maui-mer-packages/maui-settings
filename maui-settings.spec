@@ -50,6 +50,7 @@ Group:      System/Base
 Requires:   kde5-filesystem
 Requires:   %{theme}-icon-theme
 Requires:   %{theme}-cursor-theme
+Requires:   %{theme}-plasma-theme
 Requires:   %{theme}-wallpapers
 
 %description plasma5
