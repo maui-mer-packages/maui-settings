@@ -94,8 +94,8 @@ kernel.printk = 4 5 1 7
 EOF
 
 # Configure disk schedulers
-mkdir -p %{buildroot}/lib/udev/rules.d
-cat > %{buildroot}/lib/udev/rules.d/10-disk-scheduler.rules <<EOF
+mkdir -p %{buildroot}%{_udevrulesdir}
+cat > %{buildroot}%{_udevrulesdir}/10-disk-scheduler.rules <<EOF
 # Set deadline scheduler for non-rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
 
@@ -135,7 +135,7 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/powerdevilprofilesrc
 %files system
 %defattr(-,root,root,-)
 %{_libdir}/sysctl.d/10-console-messages.conf
-/lib/udev/rules.d/10-disk-scheduler.rules
+%{_udevrulesdir}/10-disk-scheduler.rules
 # >> files system
 # << files system
 
