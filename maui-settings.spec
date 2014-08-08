@@ -11,7 +11,7 @@ Name:       maui-settings
 
 Summary:    Customizations for Maui
 Version:    0.4.1
-Release:    1
+Release:    2
 Group:      System/Base
 License:    MIT
 URL:        http://www.maui-project.org/
@@ -87,8 +87,8 @@ Theme=%{theme}
 EOF
 
 # Avoid Plymouth being interrupted by kernel messages
-mkdir -p %{buildroot}%{_libdir}/sysctl.d
-cat > %{buildroot}%{_libdir}/sysctl.d/10-console-messages.conf <<EOF
+mkdir -p %{buildroot}%{_sysctldir}
+cat > %{buildroot}%{_sysctldir}/10-console-messages.conf <<EOF
 # The following stops low-level messages on console
 kernel.printk = 4 5 1 7
 EOF
@@ -134,7 +134,7 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/powerdevilprofilesrc
 
 %files system
 %defattr(-,root,root,-)
-%{_libdir}/sysctl.d/10-console-messages.conf
+%{_sysctldir}/10-console-messages.conf
 %{_udevrulesdir}/10-disk-scheduler.rules
 # >> files system
 # << files system
