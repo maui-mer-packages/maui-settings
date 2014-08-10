@@ -54,6 +54,7 @@ Requires:   %{theme}-icon-theme
 Requires:   %{theme}-cursor-theme
 Requires:   %{theme}-plasma-theme
 Requires:   %{theme}-wallpapers
+Requires:   noto-sans-fonts
 
 %description plasma5
 This package implements Maui defaults for Plasma 5.
@@ -112,6 +113,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg
 cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
 [General]
 LookAndFeel=org.hawaii.lookandfeel.desktop
+desktopFont=Noto Sans,10,-1,5,50,0,0,0,0,0
+fixed=Oxygen Mono,9,-1,5,50,0,0,0,0,0
+font=Noto Sans,10,-1,5,50,0,0,0,0,0
+menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0
+smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0
+taskbarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
+toolBarFont=Noto Sans,9,-1,5,50,0,0,0,0,0
 
 [Icons]
 Theme=%{theme}

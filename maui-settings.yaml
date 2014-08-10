@@ -57,6 +57,7 @@ SubPackages:
           - "%{theme}-cursor-theme"
           - "%{theme}-plasma-theme"
           - "%{theme}-wallpapers"
+          - noto-sans-fonts
       Files:
           - "%config %{_sysconfdir}/xdg/kdeglobals"
           - "%config %{_sysconfdir}/xdg/kcminputrc"
