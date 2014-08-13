@@ -49,7 +49,7 @@ theme for Plymouth.
 %package plasma5
 Summary:    Maui default configuration for Plasma 5
 Group:      System/Base
-Requires:   kde5-filesystem
+Requires:   kf5-filesystem
 Requires:   %{theme}-icon-theme
 Requires:   %{theme}-cursor-theme
 Requires:   %{theme}-plasma-theme

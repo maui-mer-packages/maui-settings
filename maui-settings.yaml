@@ -52,7 +52,7 @@ SubPackages:
       Description: |
         This package implements Maui defaults for Plasma 5.
       Requires:
-          - kde5-filesystem
+          - kf5-filesystem
           - "%{theme}-icon-theme"
           - "%{theme}-cursor-theme"
           - "%{theme}-plasma-theme"
