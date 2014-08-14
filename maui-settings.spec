@@ -125,6 +125,9 @@ toolBarFont=Noto Sans,9,-1,5,50,0,0,0,0,0
 
 [Icons]
 Theme=%{theme}
+
+[Theme]
+name=maui
 EOF
 
 # kcminput
