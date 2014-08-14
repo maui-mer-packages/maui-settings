@@ -111,8 +111,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg
 
 # kdeglobals
 cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
+[KDE]
+LookAndFeelPackage=org.hawaii.lookandfeel.desktop
+
 [General]
-LookAndFeel=org.hawaii.lookandfeel.desktop
 desktopFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 fixed=Oxygen Mono,9,-1,5,50,0,0,0,0,0
 font=Noto Sans,10,-1,5,50,0,0,0,0,0
