@@ -9,6 +9,7 @@ Description : |
 URL         : http://www.maui-project.org/
 NoFiles     : True
 NoSetup     : True
+BuildArch   : noarch
 
 Macros:
     - theme;maui

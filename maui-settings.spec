@@ -14,6 +14,7 @@ Version:    0.4.3
 Release:    1
 Group:      System/Base
 License:    MIT
+BuildArch:  noarch
 URL:        http://www.maui-project.org/
 Source0:    powerdevilrc
 Source1:    powerdevilprofilesrc
