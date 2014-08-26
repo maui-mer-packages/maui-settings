@@ -10,7 +10,7 @@ Name:       maui-settings
 %define theme maui
 
 Summary:    Customizations for Maui
-Version:    0.4.3
+Version:    0.5.0
 Release:    1
 Group:      System/Base
 License:    MIT
