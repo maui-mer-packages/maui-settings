@@ -19,6 +19,7 @@ URL:        http://www.maui-project.org/
 Source0:    powerdevilrc
 Source1:    powerdevilprofilesrc
 Source100:  maui-settings.yaml
+BuildRequires:  pkgconfig(systemd)
 
 %description
 Customizations for Maui.

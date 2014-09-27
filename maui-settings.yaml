@@ -18,6 +18,9 @@ Sources:
     - powerdevilrc
     - powerdevilprofilesrc
 
+PkgConfigBR:
+    - systemd
+
 Configure: none
 Builder: none
 
