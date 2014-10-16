@@ -7,7 +7,7 @@ Name:       maui-settings
 
 # >> macros
 # << macros
-%define theme maui
+%define theme wind
 
 Summary:    Customizations for Maui
 Version:    37
