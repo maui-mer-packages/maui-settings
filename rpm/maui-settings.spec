@@ -10,14 +10,12 @@ Name:       maui-settings
 %define theme maui
 
 Summary:    Customizations for Maui
-Version:    0.5.0
+Version:    37
 Release:    1
 Group:      System/Base
 License:    MIT
 BuildArch:  noarch
 URL:        http://www.maui-project.org/
-Source0:    powerdevilrc
-Source1:    powerdevilprofilesrc
 Source100:  maui-settings.yaml
 BuildRequires:  pkgconfig(systemd)
 
@@ -63,7 +61,7 @@ This package implements Maui defaults for Plasma 5.
 
 
 %prep
-# No setup
+%setup -q -n %{name}-%{version}
 
 # >> setup
 # << setup
@@ -81,30 +79,14 @@ This package implements Maui defaults for Plasma 5.
 rm -rf %{buildroot}
 # >> install pre
 # Create default configuration for Plymouth
-mkdir -p %{buildroot}%{_datadir}/plymouth
-cat > %{buildroot}%{_datadir}/plymouth/plymouthd.defaults <<EOF
-# Distribution defaults. Changes to this file will get overwritten during
-# upgrades.
-[Daemon]
-Theme=%{theme}
-EOF
+install -D -m 644 plymouth/plymouthd.defaults %{buildroot}%{_datadir}/plymouth/plymouthd.defaults
+sed -i 's,@THEME@,%{theme},g' %{buildroot}%{_datadir}/plymouth/plymouthd.defaults
 
 # Avoid Plymouth being interrupted by kernel messages
-mkdir -p %{buildroot}%{_sysctldir}
-cat > %{buildroot}%{_sysctldir}/10-console-messages.conf <<EOF
-# The following stops low-level messages on console
-kernel.printk = 4 5 1 7
-EOF
+install -D -m 644 sysctl/console-messages.conf %{buildroot}%{_sysctldir}/10-console-messages.conf
 
 # Configure disk schedulers
-mkdir -p %{buildroot}%{_udevrulesdir}
-cat > %{buildroot}%{_udevrulesdir}/10-disk-scheduler.rules <<EOF
-# Set deadline scheduler for non-rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
-
-# Set cfq scheduler for rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
-EOF
+install -D -m 644 udev/disk-scheduler.rules %{buildroot}%{_udevrulesdir}/10-disk-scheduler.rules
 
 #
 # Plasma 5 configuration
@@ -112,35 +94,16 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/xdg
 
 # kdeglobals
-cat > %{buildroot}%{_sysconfdir}/xdg/kdeglobals <<EOF
-[KDE]
-LookAndFeelPackage=org.hawaii.lookandfeel.desktop
-
-[General]
-desktopFont=Noto Sans,10,-1,5,50,0,0,0,0,0
-fixed=Oxygen Mono,9,-1,5,50,0,0,0,0,0
-font=Noto Sans,10,-1,5,50,0,0,0,0,0
-menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0
-smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0
-taskbarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
-toolBarFont=Noto Sans,9,-1,5,50,0,0,0,0,0
-
-[Icons]
-Theme=%{theme}
-
-[Theme]
-name=maui
-EOF
+install -D -m 644 kde/kdeglobals %{buildroot}%{_sysconfdir}/xdg/kdeglobals
+sed -i 's,@THEME@,%{theme},g' %{buildroot}%{_sysconfdir}/xdg/kdeglobals
 
 # kcminput
-cat > %{buildroot}%{_sysconfdir}/xdg/kcminputrc <<EOF
-[Mouse]
-cursorTheme=%{theme}
-EOF
+install -D -m 644 kde/kcminputrc %{buildroot}%{_sysconfdir}/xdg/kcminputrc
+sed -i 's,@THEME@,%{theme},g' %{buildroot}%{_sysconfdir}/xdg/kcminputrc
 
 # powerdevil
-install -D -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/xdg/powerdevilrc
-install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/powerdevilprofilesrc
+install -D -m 644 powerdevil/powerdevilrc %{buildroot}%{_sysconfdir}/xdg/powerdevilrc
+install -D -m 644 powerdevil/powerdevilprofilesrc %{buildroot}%{_sysconfdir}/xdg/powerdevilprofilesrc
 # << install pre
 
 # >> install post

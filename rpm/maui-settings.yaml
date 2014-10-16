@@ -1,5 +1,5 @@
 Name        : maui-settings
-Version     : 0.5.0
+Version     : 37
 Release     : 1
 Group       : System/Base
 License     : MIT
@@ -8,15 +8,11 @@ Description : |
   Customizations for Maui.
 URL         : http://www.maui-project.org/
 NoFiles     : True
-NoSetup     : True
 BuildArch   : noarch
+SetupOptions: -q -n %{name}-%{version}
 
 Macros:
     - theme;maui
-
-Sources:
-    - powerdevilrc
-    - powerdevilprofilesrc
 
 PkgConfigBR:
     - systemd
