@@ -9,6 +9,8 @@ Description : |
 URL         : http://www.maui-project.org/
 NoFiles     : True
 BuildArch   : noarch
+Sources:
+    - "%{name}-%{version}.tar.xz"
 SetupOptions: -q -n %{name}-%{version}
 
 Macros:

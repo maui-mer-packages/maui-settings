@@ -16,6 +16,7 @@ Group:      System/Base
 License:    MIT
 BuildArch:  noarch
 URL:        http://www.maui-project.org/
+Source0:    %{name}-%{version}.tar.xz
 Source100:  maui-settings.yaml
 BuildRequires:  pkgconfig(systemd)
 
