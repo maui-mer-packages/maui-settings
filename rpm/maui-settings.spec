@@ -10,7 +10,7 @@ Name:       maui-settings
 %define theme wind
 
 Summary:    Customizations for Maui
-Version:    37
+Version:    38
 Release:    1
 Group:      System/Base
 License:    MIT
